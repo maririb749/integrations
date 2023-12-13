@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mariana.dto.EmailDTO;
+import com.mariana.service.exception.EmailException;
 import com.sendgrid.Method;
 import com.sendgrid.Request;
 import com.sendgrid.Response;
@@ -40,14 +41,13 @@ public class EmailService {
 			Response response = sendGrid.api(request);
 			if(response.getStatusCode()>= 400 && response.getStatusCode()<= 500) {
 				LOG.error("Error sending email: " + response.getBody());
+				throw new EmailException(response.getBody());
 			}
-			else {
-				LOG.info("Email sent! status = " + response.getStatusCode());
-			}
-			
+			LOG.info("Email sent! status = " + response.getStatusCode());
+						
 		}
 		catch(IOException e) {
-			e.printStackTrace();
+			throw new EmailException(e.getMessage());
 		}
 		
 	}
