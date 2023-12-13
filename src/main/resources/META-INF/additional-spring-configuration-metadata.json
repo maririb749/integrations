@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "org.apache.commons.logging.diagnostics.dest",
+  "type": "java.lang.String",
+  "description": "A description for 'org.apache.commons.logging.diagnostics.dest'"
+}]}
