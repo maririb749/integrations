@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mariana.dto.EmailDTO;
 import com.mariana.service.EmailService;
+import com.mariana.service.SendGridEmailService;
 
 @RestController
 @RequestMapping(value = "/emails")
